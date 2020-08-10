@@ -1,4 +1,3 @@
-Sistema simples de cadastro utilizando CRUD e desenvolvido em PHP.
-
+Sistema criado para praticar conceitos adquiridos por meio de cursos de PHP.
 
 
