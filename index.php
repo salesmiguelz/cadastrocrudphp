@@ -1,11 +1,11 @@
 <?php
 
 require 'config.php';
+require 'dao/UsuarioDaoMysql.php';
 
-$lista = [];
+$usuarioDao = new UsuarioDaomysql($pdo);
 
-$sql = $pdo->query("SELECT * FROM usuarios");
-$lista = $sql->fetchAll(PDO:: FETCH_ASSOC);
+$lista = $usuarioDao->findALl();
 
 ?>
 
@@ -19,15 +19,15 @@ $lista = $sql->fetchAll(PDO:: FETCH_ASSOC);
     </tr>
     <?php foreach ($lista as $usuario): ?>
         <tr>
-            <td><?php echo $usuario['id'] ?></td>
-            <td><?php echo $usuario['nome']?></td>
-            <td><?php echo $usuario['email']?></td>
+            <td><?php echo $usuario->getId(); ?></td>
+            <td><?php echo $usuario->getNome();?></td>
+            <td><?php echo $usuario->getEmail();?></td>
             <td>
-              <a href="editar.php?id=<?php echo $usuario['id']?>">
+              <a href="editar.php?id=<?php echo $usuario->getId();?>">
                 Editar
               </a>
 
-              <a href="excluir.php?id=<?php echo $usuario['id']?>">
+              <a href="excluir.php?id=<?php echo $usuario->getId();?>">
                 Excluir
               </a>
             </td>
